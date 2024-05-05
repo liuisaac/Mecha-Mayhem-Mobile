@@ -1,16 +1,40 @@
 import { View, Text, Button, Pressable } from "react-native";
-import { Image } from "expo-image";
+import { Image, ImageBackground } from "expo-image";
 import { TextInput } from "react-native";
-import React from "react";
+import React, { useState } from "react";
+import { useRouter } from "expo-router";
 
 const auth = () => {
+    const router = useRouter();
+    const [signedIn, setSignedIn] = useState(false);
+    const [staySignedIn, setStaySignedIn] = useState(false);
+
+    const onSignIn = async (email, password) => {
+        setSignedIn(true);
+        setTimeout(handleSignIn, 300);
+    }
+
+    const handleSignIn = () => {
+        router.push('(tabs)/home');
+        try {
+        } catch {
+            //pass
+        } finally {
+            setSignedIn(false);
+        }
+    }
+
     return (
         <View className="flex flex-col items-center justify-start w-full h-full bg-[#272727]">
             <View className="w-full h-12 bg-[#F85050]"></View>
             <View className="w-full h-full flex flex-col items-center justify-center">
-                <View className="w-[80vw] h-[140vw] bg-white rounded-sm mb-16 flex flex-col items-center justify-center">
+                <Image
+                    source={require("./auth/assets/background-wrap.png")}
+                    className="w-screen h-screen absolute"
+                />
+                <View className="w-[80vw] h-[140vw] rounded-sm mb-16 flex flex-col items-center justify-center bg-[#FBFBFB]">
                     <Image
-                        source={require("./auth/red_auth_mecha_bull.svg")}
+                        source={require("./auth/assets/red_auth_mecha_bull.svg")}
                         className="w-full h-16 contains mr-5"
                         contentFit="contain"
                     />
@@ -25,42 +49,81 @@ const auth = () => {
                             className="w-full h-12 bg-gray-200 mt-5"
                         />
                         <View className="w-[60vw] flex flex-row items-center justify-center mt-5">
-                            <Pressable className="w-[20vw] h-14 bg-[#1A76F2] rounded-sm flex flex-row items-center justify-center">
-                                <Text
-                                    className="text-white text-2xl"
-                                    style={{ fontFamily: "Bebas Neue" }}
-                                >
-                                    F
-                                </Text>
+                            <Pressable
+                                style={{
+                                    shadowColor: "#000",
+                                }}
+                                className="w-[18vw] h-12 bg-[#1A76F2] rounded-sm flex flex-row items-center justify-center shadow-sm"
+                            >
+                                <Image
+                                    source={require("./auth/assets/login-logo/facebook.svg")}
+                                    className="w-full h-7 contains"
+                                    contentFit="contain"
+                                />
                             </Pressable>
-                            <Pressable className="w-[20vw] h-14 bg-[#E11F1F] rounded-sm flex flex-row items-center justify-center">
-                                <Text
-                                    className="text-white text-2xl"
-                                    style={{ fontFamily: "Bebas Neue" }}
-                                >
-                                    G
-                                </Text>
+                            <Pressable
+                                style={{
+                                    shadowColor: "#000",
+                                }}
+                                className="w-[18vw] mx-[3vw] h-12 bg-[#FFFFFF] rounded-sm flex flex-row items-center justify-center shadow-sm"
+                            >
+                                <Image
+                                    source={require("./auth/assets/login-logo/google.svg")}
+                                    className="w-full h-6 contains"
+                                    contentFit="contain"
+                                />
                             </Pressable>
-                            <Pressable className="w-[20vw] h-14 bg-black rounded-sm flex flex-row items-center justify-center">
-                                <Text
-                                    className="text-white text-2xl"
-                                    style={{ fontFamily: "Bebas Neue" }}
-                                >
-                                    A
-                                </Text>
+                            <Pressable
+                                style={{
+                                    shadowColor: "#000",
+                                }}
+                                className="w-[18vw] h-12 bg-black rounded-sm flex flex-row items-center justify-center shadow-sm"
+                            >
+                                <Image
+                                    source={require("./auth/assets/login-logo/apple.svg")}
+                                    className="w-full h-7 contains"
+                                    contentFit="contain"
+                                />
                             </Pressable>
                         </View>
-                        <View className="w-full mt-10 flex flex-row items-start justify-start">
-                          <Pressable className='h-4 w-4 bg-[#EAEAEA] rounded-sm'>
-
-                          </Pressable>
-                          <Text className='ml-2' style={{ fontFamily: "Roboto-Regular" }}>
-                            Stay Signed In
-                          </Text>
-                        </View>
-                        <Pressable className="w-full h-14 bg-[#E11F1F] rounded-sm flex flex-row items-center justify-center mt-10">
+                        <View className="w-full mt-10 flex flex-row items-start justify-start overflow-clip">
+                            <Pressable
+                                className={`h-4 w-4 ${
+                                    staySignedIn
+                                        ? "bg-[#161616]"
+                                        : "bg-[#EAEAEA]"
+                                } rounded-sm`}
+                                onPress={() => {
+                                    setStaySignedIn(!staySignedIn);
+                                }}
+                            >
+                                <Image
+                                    source={require("./auth/assets/checkmark.svg")}
+                                    className={`w-full h-4 contains ${
+                                        staySignedIn ? "flex" : "hidden"
+                                    }`}
+                                    contentFit="contain"
+                                />
+                            </Pressable>
                             <Text
-                                className="text-white text-2xl"
+                                className="ml-2"
+                                style={{ fontFamily: "Roboto-Regular" }}
+                            >
+                                Stay Signed In
+                            </Text>
+                        </View>
+                        <Pressable
+                            className={`w-full h-14 ${
+                                signedIn ? " bg-black " : "bg-[#E11F1F]"
+                            } rounded-sm flex flex-row items-center justify-center mt-10`}
+                            onTouchStart={() => {
+                                onSignIn("username", "password123");
+                            }}
+                        >
+                            <Text
+                                className={`${
+                                    signedIn ? "text-white" : "text-white"
+                                } text-2xl`}
                                 style={{ fontFamily: "Bebas Neue" }}
                             >
                                 SIGN IN

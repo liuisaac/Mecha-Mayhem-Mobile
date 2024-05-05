@@ -1,12 +1,17 @@
-import { View, Text } from "react-native";
-import { Redirect, Stack, useRouter } from "expo-router";
-import "../globals.css";
-import { loadAsync } from "expo-font";
 import { useEffect, useState } from "react";
+import { View, Text } from "react-native";
+import { Redirect, SplashScreen, Stack, useRouter } from "expo-router";
+import { loadAsync } from "expo-font";
+
+import "../globals.css";
+import { Image } from "expo-image";
+
+SplashScreen.preventAutoHideAsync();
 
 const Home = () => {
     // loading fonts
     const [fontLoaded, setFontLoaded] = useState(false);
+    const router = useRouter();
 
     useEffect(() => {
         loadAsync({
@@ -22,16 +27,27 @@ const Home = () => {
             "Roboto-MediumItalic": require("../assets/fonts/Roboto/Roboto-MediumItalic.ttf"),
             "Roboto-Regular": require("../assets/fonts/Roboto/Roboto-Regular.ttf"),
             "Roboto-Thin": require("../assets/fonts/Roboto/Roboto-Thin.ttf"),
-            "Roboto-ThinItalic": require("../assets/fonts/Roboto/Roboto-ThinItalic.ttf")
+            "Roboto-ThinItalic": require("../assets/fonts/Roboto/Roboto-ThinItalic.ttf"),
         }).then(() => {
             setFontLoaded(true);
+            setTimeout(() => SplashScreen.hideAsync(), 400); //timeout gets rid of white flash and preps transition to other screens
+            router.push("/auth");
         });
     }, []);
 
     if (!fontLoaded) return null;
-
-    // app
-    return <Redirect href="/auth" />;
+    return (
+        <View className="w-full h-full bg-[#F85050]">
+            <Image
+                source={require("../assets/icons/splash.png")}
+                className="w-full h-full contains"
+                contentFit="contain"
+            />
+        </View>
+    );
 };
 
 export default Home;
+{
+    /* <View href="/auth" className='w-full h-full bg-[#F85050]'> */
+}

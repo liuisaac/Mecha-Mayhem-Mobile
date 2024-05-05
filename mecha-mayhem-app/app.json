@@ -28,6 +28,19 @@
             ]
         ],
         "name": "mecha-mayhem-app",
-        "slug": "mecha-mayhem-app"
+        "slug": "mecha-mayhem-app",
+        "splash": {
+            "image": "./assets/icons/splash.png",
+            "resizeMode": "contain",
+            "backgroundColor": "#F85050"
+        },
+        "icon":"./assets/icons/icon.png",
+        "android": {
+            "adaptiveIcon": {
+                "foregroundImage": "./assets/icons/adaptive-icon.png",
+                "backgroundColor": "#ffffff"
+            }
+        },
+        "backgroundColor": "#F85050"
     }
 }
