@@ -43,6 +43,7 @@ const Home = () => {
                 className="w-full h-full contains"
                 contentFit="contain"
             />
+            <Redirect href="/(tabs)/home" />
         </View>
     );
 };

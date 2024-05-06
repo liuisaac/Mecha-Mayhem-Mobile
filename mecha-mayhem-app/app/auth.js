@@ -12,17 +12,17 @@ const auth = () => {
     const onSignIn = async (email, password) => {
         setSignedIn(true);
         setTimeout(handleSignIn, 300);
-    }
+    };
 
     const handleSignIn = () => {
-        router.push('(tabs)/home');
+        router.push("(tabs)/home");
         try {
         } catch {
             //pass
         } finally {
             setSignedIn(false);
         }
-    }
+    };
 
     return (
         <View className="flex flex-col items-center justify-start w-full h-full bg-[#272727]">
@@ -52,8 +52,16 @@ const auth = () => {
                             <Pressable
                                 style={{
                                     shadowColor: "#000",
+                                    shadowOffset: {
+                                        width: 0,
+                                        height: 3,
+                                    },
+                                    shadowOpacity: 0.27,
+                                    shadowRadius: 4.65,
+
+                                    elevation: 6,
                                 }}
-                                className="w-[18vw] h-12 bg-[#1A76F2] rounded-sm flex flex-row items-center justify-center shadow-sm"
+                                className="w-[18vw] h-12 bg-[#1A76F2] rounded-sm flex flex-row items-center justify-center"
                             >
                                 <Image
                                     source={require("./auth/assets/login-logo/facebook.svg")}
@@ -64,20 +72,36 @@ const auth = () => {
                             <Pressable
                                 style={{
                                     shadowColor: "#000",
+                                    shadowOffset: {
+                                        width: 0,
+                                        height: 3,
+                                    },
+                                    shadowOpacity: 0.27,
+                                    shadowRadius: 4.65,
+
+                                    elevation: 6,
                                 }}
-                                className="w-[18vw] mx-[3vw] h-12 bg-[#FFFFFF] rounded-sm flex flex-row items-center justify-center shadow-sm"
+                                className="w-[18vw] mx-[3vw] h-12 bg-[#FFFFFF] rounded-sm flex flex-row items-center justify-center"
                             >
                                 <Image
-                                    source={require("./auth/assets/login-logo/google.svg")}
-                                    className="w-full h-6 contains"
+                                    source={require("./auth/assets/login-logo/google.png")}
+                                    className="w-full h-6"
                                     contentFit="contain"
                                 />
                             </Pressable>
                             <Pressable
                                 style={{
                                     shadowColor: "#000",
+                                    shadowOffset: {
+                                        width: 0,
+                                        height: 3,
+                                    },
+                                    shadowOpacity: 0.27,
+                                    shadowRadius: 4.65,
+
+                                    elevation: 6,
                                 }}
-                                className="w-[18vw] h-12 bg-black rounded-sm flex flex-row items-center justify-center shadow-sm"
+                                className="w-[18vw] h-12 bg-black rounded-sm flex flex-row items-center justify-center"
                             >
                                 <Image
                                     source={require("./auth/assets/login-logo/apple.svg")}
@@ -118,6 +142,17 @@ const auth = () => {
                             } rounded-sm flex flex-row items-center justify-center mt-10`}
                             onTouchStart={() => {
                                 onSignIn("username", "password123");
+                            }}
+                            style={{
+                                shadowColor: "#000",
+                                shadowOffset: {
+                                    width: 0,
+                                    height: 3,
+                                },
+                                shadowOpacity: 0.27,
+                                shadowRadius: 4.65,
+
+                                elevation: 6,
                             }}
                         >
                             <Text

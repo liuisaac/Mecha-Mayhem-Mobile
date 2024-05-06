@@ -2,12 +2,12 @@ import { View, Text } from 'react-native'
 import React from 'react'
 import '../../globals.css';
 
-const list = () => {
+const map = () => {
   return (
     <View>
-      <Text>list</Text>
+      <Text>map</Text>
     </View>
   )
 }
 
-export default list
+export default map
