@@ -1,0 +1,32 @@
+[
+    {
+        "id": "1",
+        "metric": "WP",
+        "value": "21"
+    },
+    {
+        "id": "2",
+        "metric": "AP",
+        "value": "32"
+    },
+    {
+        "id": "3",
+        "metric": "SP",
+        "value": "825"
+    },
+    {
+        "id": "4",
+        "metric": "OPR",
+        "value": "55.0"
+    },
+    {
+        "id": "5",
+        "metric": "DPR",
+        "value": "50.8"
+    },
+    {
+        "id": "6",
+        "metric": "CCWM",
+        "value": "4.1"
+    }
+]

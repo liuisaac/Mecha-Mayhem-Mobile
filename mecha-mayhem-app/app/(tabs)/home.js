@@ -3,6 +3,9 @@ import { View, Text, StyleSheet, ScrollView } from "react-native";
 import Header from "../components/home/header";
 import Instant from "../components/home/instant";
 import Matches from "../components/home/matches";
+import Stats from "../components/home/stats";
+import Team from "../components/home/team";
+
 
 const Home = () => {
     return (
@@ -12,8 +15,8 @@ const Home = () => {
                 <Header />
                 <Instant />
                 <Matches />
-                <View className="w-full h-[100vh] bg-[#ffffff]"></View>
-                <View className="w-full h-12 bg-[#ffffff]"></View>
+                <Stats />
+                <Team />
             </ScrollView>
         </View>
     );
